@@ -1,0 +1,18 @@
+---
+    name: Newman CLI Sample Run
+    on:
+        workflow_dispatch:
+    
+    jobs:
+      newman:
+        name: Run collections + tests with Newman
+        runs-on: ubuntu-latest
+        steps:
+          - uses: actions/checkout@master
+    
+          - uses: SimonScholz/postman-newman-action@v1.0.0
+            with:
+              collection: postman/http-bin-get-request.json
+              envVar: '[{ "key": "user", "value": "Newman" }]'
+              globalVar: '[{ "key": "auth_token", "value": "${{ secrets.NEWMAN_TOKEN }}"}]'
+    
