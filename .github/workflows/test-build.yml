@@ -8,11 +8,9 @@
         name: Run collections + tests with Newman
         runs-on: ubuntu-latest
         steps:
-          - uses: actions/checkout@master
-    
+          - uses: actions/checkout@master    
           - uses: SimonScholz/postman-newman-action@v1.0.0
             with:
-              collection: postman/http-bin-get-request.json
-              envVar: '[{ "key": "user", "value": "Newman" }]'
-              globalVar: '[{ "key": "auth_token", "value": "${{ secrets.NEWMAN_TOKEN }}"}]'
+              collection: https://api.postman.com/collections/29172423-25d47615-fc8b-477a-bb10-33d4ceabe5f1?access_key=PMAT-01HCJF6YMXGPFTBSB6TF6BBBHR
+              envVar: '[{"key":"users","value":"zombie"}]'
     
