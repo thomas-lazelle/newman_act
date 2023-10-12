@@ -1,0 +1,73 @@
+- name: Newman/Postman action with different outputs
+  # You may pin to the exact commit or the version.
+  # uses: SimonScholz/postman-newman-action@c5aa58ad9d74f8e013b9d9924aadb016d7c287c7
+  uses: SimonScholz/postman-newman-action@v1.0.0
+  with:
+    # Postman API key
+    apiKey: # optional
+    # The exported collection.json to be run or URL to the collection, which needs the `apiKey` property
+    collection: # default is 
+    # The environment.json to be used or URL to the environment, which needs the `apiKey` property
+    environment: # optional
+    # Additional environment variables, which can also override the ones from the `environment`.
+    envVar: # optional
+    # The globals.json to be used
+    globals: # optional
+    # Additional global variables, which can also override the ones from the `globals`.
+    globalVar: # optional
+    # The relative path to export the globals file from the current run
+    exportGlobals: # optional
+    # The relative path to export the environment file from the current run
+    exportEnvironment: # optional
+    # The relative path to export the collection from the current run
+    exportCollection: # optional
+    # Specify the number of iterations to run on the collection. This is usually accompanied by providing a data file reference as `iterationData`.
+    iterationCount: # optional
+    # Path to the JSON or CSV file or URL to be used as a data source when running multiple iterations on a collection.
+    iterationData: # optional
+    # The name or ID of the folder (ItemGroup) in the collection which would be run instead of the entire collection.
+    folder: # optional
+    # The path of the directory to be used as the working directory.
+    workingDir: # optional
+    # Allow reading files outside of the working directory. (type: boolean)
+    insecureFileRead: # optional
+    # Specify the time (in milliseconds) to wait for the entire collection run to complete execution. (type: number)
+    timeout: # optional, default is Infinity
+    # Specify the time (in milliseconds) to wait for requests to return a response. (type: number)
+    timeoutRequest: # optional, default is Infinity
+    # Specify the time (in milliseconds) to wait for scripts to return a response. (type: number)
+    timeoutScript: # optional, default is Infinity
+    # Specify the time (in milliseconds) to wait for between subsequent requests. (type: number)
+    delayRequest: # optional, default is 0
+    # This specifies whether Newman would automatically follow 3xx responses from servers. (type: boolean)
+    ignoreRedirects: # optional, default is false
+    # Disables SSL verification checks and allows self-signed SSL certificates. (type: boolean)
+    insecure: # optional, default is false
+    # Specify whether or not to stop a collection run on encountering the first test script error. "folder" allows you to skip the entire collection run in case an invalid folder was specified using the `folder` option or an error was encountered in general. "failure" would gracefully stop a collection run after completing the current test script. (possible values: `true` or `false` or `folder` or `failure`)
+    bail: # optional, default is false
+    # If present, allows overriding the default exit code from the current collection run, useful for bypassing collection result failures. (type: boolean)
+    suppressExitCode: # optional, default is false
+    # Available reporters: cli, json, html, and junit.
+    reporters: # optional, default is cli
+    # Specify options for the reporter(s) declared in options.reporters. (type: any)
+    reporter: # optional
+    # Enable or Disable colored CLI output. (possible values: `on` or `of` or `auto`)
+    color: # optional, default is auto
+    # The path to the public client certificate file.
+    sslClientCert: # optional
+    # The path to the private client key file.
+    sslClientKey: # optional
+    # The secret client key passphrase.
+    sslClientPassphrase: # optional
+    # The path to the client certificate configuration list file. This option takes precedence over sslClientCert, sslClientKey, and slClientPassphrase. When there is no match in this configuration list, sslClientCert is used as a fallback.
+    sslClientCertList: # optional
+    # The path to the file that holds one or more trusted CA certificates in PEM format.
+    sslExtraCaCerts: # optional
+    # Custom HTTP(S) agents which will be used for making the requests. This allows for the use of various proxies (e.g. socks)
+    requestAgents: # optional
+    # A tough-cookie cookieJar / file path for the current collection run.
+    cookieJar: # optional
+    # Whether the original summary object of the newman run should be set as output or not (type: `boolean`)
+    outputOriginalSummary: # optional, default is false
+    # Whether the google cards v2 sections array should be set as output or not (type: `boolean`)
+    outputGoogleCardV2: # optional, default is false

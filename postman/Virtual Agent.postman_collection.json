@@ -1,0 +1,175 @@
+{
+	"info": {
+		"_postman_id": "4473e7bf-e45a-4a64-b14a-1c31a401dc59",
+		"name": "Virtual Agent",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "29172423"
+	},
+	"item": [
+		{
+			"name": "Sync Locations",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "0646d61a-bb2e-4afe-a473-780cf55ff842",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "https://dev.callpotential.services/{{buildName}}/v1/virtual_agent/sync_locations",
+					"protocol": "https",
+					"host": [
+						"dev",
+						"callpotential",
+						"services"
+					],
+					"path": [
+						"{{buildName}}",
+						"v1",
+						"virtual_agent",
+						"sync_locations"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Location Configs",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "0646d61a-bb2e-4afe-a473-780cf55ff842",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://dev.callpotential.services/{{buildName}}/v1/virtual_agent/location_configs/880",
+					"protocol": "https",
+					"host": [
+						"dev",
+						"callpotential",
+						"services"
+					],
+					"path": [
+						"{{buildName}}",
+						"v1",
+						"virtual_agent",
+						"location_configs",
+						"880"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Upload Location Configs",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "0646d61a-bb2e-4afe-a473-780cf55ff842",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "file",
+							"type": "file",
+							"src": "chat.csv"
+						}
+					]
+				},
+				"url": {
+					"raw": "https://dev.callpotential.services/{{buildName}}/v1/virtual_agent/location_configs/880",
+					"protocol": "https",
+					"host": [
+						"dev",
+						"callpotential",
+						"services"
+					],
+					"path": [
+						"{{buildName}}",
+						"v1",
+						"virtual_agent",
+						"location_configs",
+						"880"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "sync unit inventory",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "0646d61a-bb2e-4afe-a473-780cf55ff842",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "https://dev.callpotential.services/{{buildName}}/v1/virtual_agent/sync_unit_inventory",
+					"protocol": "https",
+					"host": [
+						"dev",
+						"callpotential",
+						"services"
+					],
+					"path": [
+						"{{buildName}}",
+						"v1",
+						"virtual_agent",
+						"sync_unit_inventory"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"variable": [
+		{
+			"key": "buildName",
+			"value": "cp-18893-token"
+		},
+		{
+			"key": "filePath",
+			"value": ""
+		}
+	]
+}

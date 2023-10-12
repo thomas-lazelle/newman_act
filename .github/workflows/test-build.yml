@@ -1,16 +1,29 @@
----
-    name: Newman CLI Sample Run
-    on:
-        workflow_dispatch:
-    
-    jobs:
-      newman:
-        name: Run collections + tests with Newman
+name: Newman CLI Sample Run
+on:
+    push:
+        branches: [ main ]
+
+jobs:
+    postman_test:
         runs-on: ubuntu-latest
-        steps:
-          - uses: actions/checkout@master    
-          - uses: SimonScholz/postman-newman-action@v1.0.0
-            with:
-              collection: https://api.postman.com/collections/29172423-25d47615-fc8b-477a-bb10-33d4ceabe5f1?access_key=PMAT-01HCJF6YMXGPFTBSB6TF6BBBHR
-              envVar: '[{"key":"users","value":"zombie"}]'
     
+        steps:
+        - name: Checkout code
+          uses: actions/checkout@v2
+    
+        - name: Install Newman
+          run: | 
+           npm install -g newman
+           npm install -g newman-reporter-htmlextra
+        
+        - name: Make Directory for results
+          run: mkdir -p testResults
+
+        - name: Run Postman Collection
+          run: newman run "./postman/Virtual Agent.postman_collection.json" -r htmlextra --reporter-htmlextra-export testResults/htmlreport.html --reporter-htmlextra-darkTheme  > testResults/runreport1.html
+
+        - name: Details
+          uses: actions/upload-artifact@v2
+            with:
+             name: RunReports
+             path: testResults            
