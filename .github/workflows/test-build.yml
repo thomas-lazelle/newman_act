@@ -27,18 +27,9 @@ jobs:
             git config --global user.email "tlazelle@callpotential.com"
             git config --global user.name "Tom LaZelle"
 
-          # Commit and push the report to the "gh-pages" branch
         - name: Commit and Push Report
-          run: git checkout gh-pages
-
-        - name: Copy Report
-          run: cp docs/index.html ./
-        
-        - name: Add and Commit
-          run: git add report.html
-        
-        - name: Push to GitHub
           run: |
-            git commit -m "Add Newman report"
-            git push origin gh-pages
+            git add docs/report.html
+            git commit -m "Add Newman report to docs"
+            git push
      
