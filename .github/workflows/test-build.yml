@@ -46,3 +46,5 @@ jobs:
               git add ./index.html
               git commit -m "Add Newman report to GitHub Pages"
               git push origin gh-pages
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}              
