@@ -19,11 +19,19 @@ jobs:
           run: cp ./postman/chat.csv $GITHUB_WORKSPACE
                   
         - name: Run Postman Collection
-          run: newman run "./postman/Virtual Agent.postman_collection.json" -r htmlextra
+          run: newman run "./postman/Virtual Agent.postman_collection.json" -r htmlextra --reporter-htmlextra-export docs/index.html || true
 
-        - name: Publish report
+        - name: Add, commit and push changes
+          run: |
+            git config --local user.email "action@github.com"
+            git config --local user.name "GitHub Action"
+            git add docs/index.html
+            git commit -m "Add generated index.html" -a
+            git push https://${{secrets.TEST_SECRET}}@github.com/${{github.repository}}.git HEAD:main
+      
+        - name: Output the run Details
           uses: actions/upload-artifact@v2
           with:
-              name: newman-report
-              path: ./newman
+            name: RunReports
+            path: docs
      
