@@ -33,5 +33,9 @@ jobs:
             name: newman-report
             path: ./newman/index.html
             retention-days: 1
-      - name: saver
-        run: mv ./newman/index.html /docs/index.html
+
+      - name: Copy Postman Results to Docs
+        run: |
+          mkdir -p docs
+          cp -r ./newman/index.html docs
+          
