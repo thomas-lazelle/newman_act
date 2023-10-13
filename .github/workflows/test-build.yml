@@ -21,17 +21,18 @@ jobs:
         - name: Run Postman Collection
           run: newman run "./postman/Virtual Agent.postman_collection.json" -r htmlextra --reporter-htmlextra-export docs/index.html || true
 
-        - name: Add, commit and push changes
+          # Configure Git for the workflow
+        - name: Set up Git
           run: |
-            git config --local user.email "action@github.com"
-            git config --local user.name "GitHub Action"
-            git add docs/index.html
-            git commit -m "Add generated index.html" -a
-            git push https://${{secrets.TEST_SECRET}}@github.com/${{github.repository}}.git HEAD:main
-      
-        - name: Output the run Details
-          uses: actions/upload-artifact@v2
-          with:
-            name: RunReports
-            path: docs
+            git config --global user.email "tlazelle@callpotential.com"
+            git config --global user.name "Tom LaZelle"
+
+   # Commit and push the report to the "gh-pages" branch
+        - name: Commit and Push Report
+          run: |
+          git checkout gh-pages  # Switch to the "gh-pages" branch
+          cp docs/index.html ./  # Copy the HTML report to the root of the branch
+          git add report.html
+          git commit -m "Add Newman report"
+          git push origin gh-pages  # Push to the "gh-pages" branch
      
