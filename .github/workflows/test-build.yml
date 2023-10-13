@@ -32,7 +32,7 @@ jobs:
           run: |
                git config --global user.email "tlazelle@callpotential.com"
                git config --global user.name "Tom LaZelle"
-               git push https://${{ secrets.NEWMAN_PAGES }}@github.com/thomas-lazelle/newman_act.git
+               git push https://${{ secrets.NEWMAN_PAGES }}@github.com/thomas-lazelle/newman_act.git                        
             
         - name: Push to GitHub Pages
           run: |
