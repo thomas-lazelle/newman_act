@@ -28,6 +28,11 @@ jobs:
               path: ./newman/index.html
               retention-days: 1
 
+        - name: Configure Git Identity
+          run: |
+               git config --global user.email "tlazelle@callpotential.com"
+               git config --global user.name "Tom LaZelle"
+            
         - name: Push to GitHub Pages
           run: |
                git checkout -B gh-pages
