@@ -23,7 +23,7 @@ jobs:
 
         - name: Setup Pages
           uses: actions/configure-pages@v2          
-          
+
         - name: Publish report
           uses: actions/upload-artifact@v3
           with:
@@ -34,3 +34,5 @@ jobs:
         - name: Deploy to GitHub Pages
           id: deployment
           uses: actions/deploy-pages@v1              
+          with:
+            token: ${{ secrets.GITHUB_TOKEN }}
