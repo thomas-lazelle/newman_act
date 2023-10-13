@@ -19,7 +19,7 @@ jobs:
           run: cp ./postman/chat.csv $GITHUB_WORKSPACE
                   
         - name: Run Postman Collection
-          run: newman run "./postman/Virtual Agent.postman_collection.json" -r htmlextra --reporter-htmlextra-export docs/index.html || true
+          run: newman run "./postman/Virtual Agent.postman_collection.json" -r htmlextra --reporter-htmlextra-export docs/report.html || true
 
           # Configure Git for the workflow
         - name: Set up Git
