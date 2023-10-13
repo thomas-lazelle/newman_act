@@ -31,5 +31,5 @@ jobs:
         uses: actions/upload-artifact@v3
         with:
             name: newman-report
-            path: $GITHUB_WORKSPACE/newman/index.html
+            path: ./newman/index.html
             retention-days: 1
