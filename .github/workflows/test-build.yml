@@ -33,10 +33,3 @@ jobs:
             name: newman-report
             path: $GITHUB_WORKSPACE/newman/index.html
             retention-days: 1
-      - name: Publish Github Pages
-        uses: peaceiris/actions-gh-pages@v3.8.0
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_branch: gh-pages
-          publish_dir: ${{ github.workspace }}/newman
-          keep_files: true 
