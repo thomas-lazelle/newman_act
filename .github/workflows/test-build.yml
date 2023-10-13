@@ -19,17 +19,10 @@ jobs:
           run: cp ./postman/chat.csv $GITHUB_WORKSPACE
                   
         - name: Run Postman Collection
-          run: newman run "./postman/Virtual Agent.postman_collection.json" -r htmlextra --reporter-htmlextra-export docs/report.html || true
+          run: newman run "./postman/Virtual Agent.postman_collection.json" -r htmlextra --reporter-htmlextra-export ./newman/report.html
 
-          # Configure Git for the workflow
-        - name: Set up Git
-          run: |
-            git config --global user.email "tlazelle@callpotential.com"
-            git config --global user.name "Tom LaZelle"
-
-        - name: Commit and Push Report
-          run: |
-            git add docs/report.html
-            git commit -m "Add Newman report to docs"
-            git push
-     
+        - name: Publish report
+          uses: actions/upload-artifact@v2
+          with:
+              name: newman-report
+              path: ./newman/report.html
