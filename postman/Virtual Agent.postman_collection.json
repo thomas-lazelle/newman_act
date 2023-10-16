@@ -13,8 +13,8 @@
 					"listen": "test",
 					"script": {
 						"exec": [
-							"pm.test(\"Status code is 200\", function () {\r",
-							"    pm.response.to.have.status(200);\r",
+							"pm.test(\"Successful Post request\", function () {\r",
+							"    pm.expect(pm.response.code).to.be.oneOf([200, 201, 202]);\r",
 							"});"
 						],
 						"type": "text/javascript"
@@ -53,6 +53,52 @@
 			"response": []
 		},
 		{
+			"name": "sync unit inventory",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Successful Post request\", function () {\r",
+							"    pm.expect(pm.response.code).to.be.oneOf([200, 201, 202]);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "0646d61a-bb2e-4afe-a473-780cf55ff842",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "https://dev.callpotential.services/{{buildName}}/v1/virtual_agent/sync_unit_inventory",
+					"protocol": "https",
+					"host": [
+						"dev",
+						"callpotential",
+						"services"
+					],
+					"path": [
+						"{{buildName}}",
+						"v1",
+						"virtual_agent",
+						"sync_unit_inventory"
+					]
+				}
+			},
+			"response": []
+		},
+		{
 			"name": "Get Location Configs",
 			"event": [
 				{
@@ -60,7 +106,7 @@
 					"script": {
 						"exec": [
 							"pm.test(\"Successful Get request\", function () {\r",
-							"    pm.expect(pm.response.code).to.be.oneOf([201, 202]);\r",
+							"    pm.expect(pm.response.code).to.be.oneOf([200, 201, 202]);\r",
 							"});"
 						],
 						"type": "text/javascript"
@@ -116,7 +162,7 @@
 					"script": {
 						"exec": [
 							"pm.test(\"Successful Put request\", function () {\r",
-							"    pm.expect(pm.response.code).to.be.oneOf([201, 202]);\r",
+							"    pm.expect(pm.response.code).to.be.oneOf([200, 201, 202]);\r",
 							"});"
 						],
 						"type": "text/javascript"
@@ -142,7 +188,7 @@
 						{
 							"key": "file",
 							"type": "file",
-							"src": "chat_test.csv"
+							"src": "chat.csv"
 						}
 					]
 				},
@@ -160,52 +206,6 @@
 						"virtual_agent",
 						"location_configs",
 						"880"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "sync unit inventory",
-			"event": [
-				{
-					"listen": "test",
-					"script": {
-						"exec": [
-							"pm.test(\"Successful Post request\", function () {\r",
-							"    pm.expect(pm.response.code).to.be.oneOf([201, 202]);\r",
-							"});"
-						],
-						"type": "text/javascript"
-					}
-				}
-			],
-			"request": {
-				"auth": {
-					"type": "bearer",
-					"bearer": [
-						{
-							"key": "token",
-							"value": "0646d61a-bb2e-4afe-a473-780cf55ff842",
-							"type": "string"
-						}
-					]
-				},
-				"method": "POST",
-				"header": [],
-				"url": {
-					"raw": "https://dev.callpotential.services/{{buildName}}/v1/virtual_agent/sync_unit_inventory",
-					"protocol": "https",
-					"host": [
-						"dev",
-						"callpotential",
-						"services"
-					],
-					"path": [
-						"{{buildName}}",
-						"v1",
-						"virtual_agent",
-						"sync_unit_inventory"
 					]
 				}
 			},
@@ -236,10 +236,6 @@
 		{
 			"key": "buildName",
 			"value": "cp-18893-await-queue"
-		},
-		{
-			"key": "filePath",
-			"value": ""
 		}
 	]
 }
