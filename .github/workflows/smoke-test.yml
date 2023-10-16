@@ -5,8 +5,13 @@ on:
 jobs:
   postman_test:
       runs-on: ubuntu-latest
-  
+      
       steps:
+      - name: Use variables
+        run: |
+          echo "branch name : $GITHUB_REF_NAME"
+          echo "full branch name : $GITHUB_REF"
+
       - name: Checkout code
         uses: actions/checkout@v2
   
