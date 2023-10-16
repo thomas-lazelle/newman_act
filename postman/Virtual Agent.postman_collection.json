@@ -188,7 +188,7 @@
 						{
 							"key": "file",
 							"type": "file",
-							"src": "chat.csv"
+							"src": "upload.csv"
 						}
 					]
 				},
