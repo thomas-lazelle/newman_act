@@ -142,7 +142,7 @@
 						{
 							"key": "file",
 							"type": "file",
-							"src": "/C:/temp/chat_test.csv"
+							"src": "chat_test.csv"
 						}
 					]
 				},
