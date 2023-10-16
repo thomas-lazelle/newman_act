@@ -13,6 +13,7 @@ jobs:
       - name: Install Newman
         run: |
             npm install -g newman
+            npm install -g newman-reporter-htmlextra
 
       - name: Copy File
         run: cp ./postman/upload.csv $GITHUB_WORKSPACE
