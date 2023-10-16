@@ -25,10 +25,10 @@ jobs:
         run: cp ./postman/chat.csv $GITHUB_WORKSPACE
                 
       - name: Run Postman Collection
-        run: newman run "./postman/Virtual Agent.postman_collection.json" -r htmlextra --reporter-htmlextra-export ./newman/index.html
+        run: newman run "./postman/Virtual Agent.postman_collection.json" -r htmlextra
 
-      - name: Deploy
-        uses: peaceiris/actions-gh-pages@v3
+      - name: Publish report
+        uses: actions/upload-artifact@v2
         with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./newman
+          name: newman-report
+          path: ./newman        
